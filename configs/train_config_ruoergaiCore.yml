@@ -1,0 +1,195 @@
+output_root: '../'
+pytorch_data_dir: '../data/1993/construct/core'
+experiment_name: "core_train"
+log_dir: "1993/core"
+year: "1993"
+Builtname: "1990_15_GHSL_build"
+azureml_logging: True
+submitting_to_aml: False
+useDEM: False
+useNDVI: False
+useNDWI: False
+useNDMI: False
+useVARI: True
+useSlope: True
+useAspect: False
+useBuilt: True
+useCoordinate: False
+stdMax: 25479.4
+feature_num: 28
+Multi_threaded: False
+nns_file_name_inter: 'ruoergaiCore_near_inter_1993.npz'
+nns_file_name_intra: 'ruoergaiCore_near_intra_1993.npz'
+nns_file_name_neg: 'ruoergaiCore_near_neg_1993.npz'
+code_model_path: '../checkpoints/core_train/code/core_train_4000_net_params.pth'
+modelName: 'DINO'
+
+# Loader params
+num_workers: 0
+max_steps: 500000
+batch_size: 256
+val_batch_size: 512
+
+num_neighbors: 3
+dataset_name: "ruoergai_core"
+
+# Used if dataset_name is "directory"
+dir_dataset_name: ~
+dir_dataset_n_classes: 8
+
+has_labels: False
+crop_type: None
+crop_ratio: .5
+res: 8
+loader_crop_type: "center"
+
+# Model Params
+extra_clusters: 0
+use_true_labels: False
+use_recalibrator: False
+model_type: "vit_small"
+arch: "dino"
+use_fit_model: False
+dino_feat_type: "feat"
+projection_type: "nonlinear"
+dino_patch_size: 8
+granularity: 1
+continuous: True
+kernel_size_feat_pool: 256
+dim: 9
+dropout: True
+zero_clamp: True
+
+pretrained_weights: ~
+use_salience: False
+stabalize: False
+stop_at_zero: True
+
+# Feature Contrastive params
+pointwise: False
+feature_samples: 11
+neg_samples: 4
+aug_alignment_weight: 0.0
+
+correspondence_weight: 1.0
+
+
+# IAROA vit small 1/31/22
+neg_inter_weight: 1
+pos_inter_weight: 0.1
+pos_intra_weight: 0.3
+neg_inter_shift: 0.750
+pos_inter_shift: 0.850
+pos_intra_shift: 0.801
+
+# Potsdam vit small 1/31/22
+#neg_inter_weight: 0.63
+#pos_inter_weight: 0.25
+#pos_intra_weight: 0.67
+#neg_inter_shift: 0.46
+#pos_inter_shift: 0.02
+#pos_intra_shift: 0.08
+
+# Cocostuff27 vit small 1/31/22
+#neg_inter_weight: 0.63
+#pos_inter_weight: 0.25
+#pos_intra_weight: 0.67
+#neg_inter_shift: 0.66
+#pos_inter_shift: 0.02
+#pos_intra_shift: 0.08
+
+
+## Cocostuff27 10/3 vit_base
+
+#neg_inter_weight: 0.1538476246415498
+#pos_inter_weight: 1
+#pos_intra_weight: 0.1
+#
+#neg_inter_shift: 1
+#pos_inter_shift: 0.2
+#pos_intra_shift: 0.12
+
+
+## Cocostuff27 10/3 vit_small
+#neg_inter_weight: .63
+#pos_inter_weight: .25
+#pos_intra_weight: .67
+#
+#neg_inter_shift: .16
+#pos_inter_shift: .02
+#pos_intra_shift: .08
+
+
+
+## Cocostuff27 10/3 moco
+#neg_inter_weight: .63
+#pos_inter_weight: .25
+#pos_intra_weight: .67
+#
+#neg_inter_shift: .26
+#pos_inter_shift: .36
+#pos_intra_shift: .32
+
+#pos_inter_shift: .12
+#pos_intra_shift: .18
+
+## Cocostuff27
+#neg_inter_weight: .72
+#pos_inter_weight: .80
+#pos_intra_weight: .29
+#
+#neg_inter_shift: .86
+#pos_inter_shift: .04
+#pos_intra_shift: .34
+
+# Cityscapes 10/3
+
+#neg_inter_weight: 0.9058762625226623
+#pos_inter_weight: 0.577453483136995
+#pos_intra_weight: 1
+#
+#neg_inter_shift: 0.31361241889448443
+#pos_inter_shift: 0.1754346515479633
+#pos_intra_shift: 0.45828472207
+
+
+# Cityscapes
+#neg_inter_weight: .72
+#pos_inter_weight: .18
+#pos_intra_weight: .46
+#
+#neg_inter_shift: .25
+#pos_inter_shift: .20
+#pos_intra_shift: .25
+
+
+rec_weight: 0.0
+repulsion_weight: 0.0
+
+# CRF Params
+crf_weight: 0.0
+alpha: .5
+beta: .15
+gamma: .05
+w1: 10.0
+w2: 3.0
+shift: 0.00
+crf_samples: 1000
+color_space: "rgb"
+
+reset_probe_steps: ~
+
+# Logging params
+n_images: 3
+scalar_log_freq: 10
+checkpoint_freq: 4000
+val_freq: 4000
+hist_freq: 200
+
+
+hydra:
+  run:
+    dir: "."
+  output_subdir: ~
+  #job_logging: "disabled"
+  #hydra_logging: "disabled"

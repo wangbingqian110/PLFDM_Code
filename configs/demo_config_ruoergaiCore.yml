@@ -1,0 +1,88 @@
+output_root: '../'
+pytorch_data_dir: '../data/1993/construct/core'
+code_model_path: '../data/1993/experiment/core/core_train_4000_net_params.pth'
+model_path: "../data/1993/experiment/core/core_train_28000_all_params.pth"
+image_dir: "../data/core/"
+year: "1993"
+Builtname: "1990_15_GHSL_build"
+res: 8
+batch_size: 2048
+num_workers: 0
+useDEM: False
+useNDVI: False
+useNDWI: False
+useNDMI: False
+useVARI: True
+useSlope: True
+useAspect: False
+useBuilt: True
+useCoordinate: False
+stdMax: 25479.4
+feature_num: 28
+Multi_threaded: False
+modelName: 'DINO'
+
+hydra:
+  run:
+    dir: "."
+  output_subdir: ~
+  #job_logging: "disabled"
+  #hydra_logging: "disabled"
+
+######################################################
+
+
+# Model Params
+dataset_name: "demo_core"
+extra_clusters: 0
+use_true_labels: False
+use_recalibrator: False
+model_type: "vit_small"
+arch: "dino"
+use_fit_model: False
+dino_feat_type: "feat"
+projection_type: "nonlinear"
+#projection_type: linear
+dino_patch_size: 8
+granularity: 1
+continuous: True
+dim: 9
+dropout: True
+zero_clamp: True
+
+lr: 5e-4
+pretrained_weights: ~
+use_salience: False
+stabalize: False
+stop_at_zero: True
+
+# Feature Contrastive params
+pointwise: True
+feature_samples: 11
+neg_samples: 4
+aug_alignment_weight: 0.0
+
+correspondence_weight: 1.0
+
+
+rec_weight: 0.0
+repulsion_weight: 0.0
+
+# Logging params
+n_images: 4
+scalar_log_freq: 10
+checkpoint_freq: 50
+val_freq: 100
+hist_freq: 100
+
+# CRF Params
+crf_weight: 0.0
+alpha: .5
+beta: .15
+gamma: .05
+w1: 10.0
+w2: 3.0
+shift: 0.00
+crf_samples: 1000
+color_space: "rgb"
+
